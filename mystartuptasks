@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#Start my conky widgets:
+conky -c ~/.config/conky/conky.conf &
+conky -c ~/.config/conky/connections.conf &
+conky -c ~/.config/conky/logs.conf &
+
+#Start my LogAlert jobs:
+tail -f -n1 /var/log/ufw.log | awk '/UFW BLOCK/{system("play -q /usr/share/sounds/gnome/default/alerts/sonar.ogg")}' &
+
